@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carnet de préparation — EMI · ENSIAS · INPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F1EEE4;
+    --card: #FBFAF6;
+    --ink: #212A38;
+    --ink-soft: #5B6472;
+    --line: #DAD4C2;
+    --line-soft: #E9E4D6;
+    --accent: #9B2C31;
+    --accent-wash: #F1DBD8;
+    --gold: #A9832F;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:28px 18px 60px;}
+
+  header.masthead{position:relative;padding:6px 0 22px;border-bottom:2px solid var(--ink);margin-bottom:22px;}
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(1.6rem, 5vw, 2.15rem);
+    line-height:1.15;
+    margin:0 0 8px;
+    max-width:14ch;
+  }
+  .subtitle{font-size:0.95rem;color:var(--ink-soft);max-width:46ch;line-height:1.5;margin:0;}
+  .seal{
+    position:absolute; top:2px; right:0;
+    width:84px; height:84px;
+    border:2px solid var(--accent);
+    border-radius:50%;
+    color:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    transform:rotate(9deg);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:0.62rem;
+    letter-spacing:0.03em;
+    line-height:1.25;
+    padding:6px;
+  }
+  .seal span{display:block;}
+  .seal .big{font-family:'Fraunces', serif; font-size:1.05rem; margin:1px 0;}
+
+  .progress-global{display:flex; align-items:center; gap:14px; margin:20px 0 26px;}
+  .progress-global .count{font-family:'Fraunces', serif; font-size:1.4rem; white-space:nowrap;}
+  .progress-global .count small{font-family:'IBM Plex Sans',sans-serif; font-size:0.7rem; color:var(--ink-soft); display:block; font-weight:500; letter-spacing:0.01em;}
+  .bar-track{flex:1; height:8px; background:var(--line-soft); border-radius:5px; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--accent); border-radius:5px; transition:width 0.35s ease;}
+
+  section.card{background:var(--card); border:1px solid var(--line); border-radius:6px; margin-bottom:12px; overflow:hidden;}
+  .card-head{width:100%; display:flex; align-items:center; gap:12px; padding:14px 16px; background:none; border:none; cursor:pointer; text-align:left; font-family:inherit; color:inherit;}
+  .card-head:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
+  .icon{flex:none; width:22px; height:22px; color:var(--ink-soft);}
+  .card-head .titles{flex:1; min-width:0;}
+  .card-head h2{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; margin:0;}
+  .card-head .frac{font-size:0.78rem; color:var(--ink-soft); margin-top:2px;}
+  .chevron{flex:none; width:14px; height:14px; color:var(--ink-soft); transition:transform 0.25s ease;}
+  section.card.open .chevron{transform:rotate(180deg);}
+
+  .card-body{max-height:0; overflow:hidden; transition:max-height 0.3s ease; padding:0 16px;}
+  section.card.open .card-body{padding:2px 16px 12px;}
+
+  .item{display:flex; align-items:flex-start; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);}
+  .item:last-child{border-bottom:none;}
+  .item .box{flex:none; width:19px; height:19px; margin-top:2px; border:1.5px solid var(--ink-soft); border-radius:4px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--card);}
+  .item .box svg{width:12px;height:12px;opacity:0;transition:opacity 0.15s ease;}
+  .item.done .box{border-color:var(--accent); background:var(--accent-wash);}
+  .item.done .box svg{opacity:1;}
+  .item.done .box svg path{stroke:var(--accent);}
+  .item label{cursor:pointer; font-size:0.93rem; line-height:1.4; padding-top:1px;}
+  .item.done label{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+
+  footer{margin-top:26px; text-align:center;}
+  footer p{font-size:0.78rem; color:var(--ink-soft); line-height:1.6; max-width:44ch; margin:0 auto 12px;}
+  .reset-btn{background:none; border:1px solid var(--line); color:var(--ink-soft); font-family:inherit; font-size:0.78rem; padding:7px 14px; border-radius:5px; cursor:pointer;}
+  .reset-btn:hover{border-color:var(--accent); color:var(--accent);}
+
+  @media (prefers-reduced-motion: reduce){
+    .bar-fill, .card-body, .chevron, .item .box svg{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <h1>Carnet de préparation</h1>
+    <p class="subtitle">MIP‑GI à la FSTM, en route vers l'EMI, l'ENSIAS et l'INPT après le DEUST.</p>
+    <div class="seal"><span>OBJECTIF</span><span class="big">2027</span><span>CONCOURS</span></div>
+  </header>
+
+  <div class="progress-global">
+    <div class="count"><span id="global-count">0/0</span><small>chapitres &amp; étapes validés</small></div>
+    <div class="bar-track"><div class="bar-fill" id="global-bar" style="width:0%"></div></div>
+  </div>
+
+  <div id="sections"></div>
+
+  <footer>
+    <p>Ce carnet est un repère personnel, pas une échéance officielle : les seuils de moyenne, mentions et dates de concours sont fixés chaque année par les écoles. Vérifie toujours l'avis officiel publié avant de t'inscrire.</p>
+    <button class="reset-btn" id="reset-btn" type="button">Réinitialiser le carnet</button>
+  </footer>
+
+</div>
+
+<script>
+const ICONS = {
+  wave: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 15c2.5 0 2.5-6 5-6s2.5 6 5 6 2.5-6 5-6 2.5 6 5 6"/></svg>',
+  grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+  dice: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg>',
+  orbit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="9" ry="4"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(120 12 12)"/></svg>',
+  code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6M16 6l5 6-5 6"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5Z"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>'
+};
+
+const SECTIONS = [
+  { id:'an', icon:'wave', title:'Analyse', items:[
+    ['suites','Suites numériques & limites'],
+    ['cont','Continuité & dérivabilité'],
+    ['dl','Développements limités'],
+    ['integ','Intégration (Riemann)'],
+    ['series','Séries numériques'],
+    ['fourier','Séries de Fourier'],
+    ['plusvar','Fonctions de plusieurs variables'],
+    ['integmult','Intégrales multiples'],
+    ['eqdiff','Équations différentielles'],
+    ['laplace','Transformée de Laplace & complexes (résidus)'],
+  ]},
+  { id:'al', icon:'grid', title:'Algèbre', items:[
+    ['struct','Structures algébriques (groupes, anneaux, corps)'],
+    ['poly','Polynômes & arithmétique'],
+    ['ev','Espaces vectoriels & applications linéaires'],
+    ['mat','Matrices, déterminants, systèmes linéaires'],
+    ['reduc','Réduction des endomorphismes'],
+    ['euclid','Espaces euclidiens & formes quadratiques'],
+  ]},
+  { id:'pr', icon:'dice', title:'Probabilités & statistiques', items:[
+    ['elem','Probabilités élémentaires'],
+    ['va','Variables aléatoires & lois usuelles'],
+    ['stat','Statistique descriptive'],
+  ]},
+  { id:'ph', icon:'orbit', title:'Physique', items:[
+    ['mecapt','Mécanique du point'],
+    ['mecasol','Mécanique du solide'],
+    ['electro','Électrocinétique'],
+    ['electromag','Électromagnétisme'],
+    ['thermo','Thermodynamique'],
+    ['optique','Optique'],
+    ['ondes','Ondes & oscillateurs'],
+  ]},
+  { id:'in', icon:'code', title:'Informatique', items:[
+    ['algo','Algorithmique & structures de données'],
+    ['progc','Programmation C / C++'],
+    ['poo','Programmation orientée objet'],
+    ['bdd','Bases de données & SQL'],
+    ['archi','Architecture & systèmes d\'exploitation (notions)'],
+    ['reseaux','Réseaux (notions de base)'],
+  ]},
+  { id:'en', icon:'chat', title:'Anglais (épreuve ENSIAS)', items:[
+    ['gram','Grammaire & structures'],
+    ['comp','Compréhension écrite'],
+    ['vocab','Vocabulaire scientifique & technique'],
+  ]},
+  { id:'pl', icon:'calendar', title:'Plan d\'action', items:[
+    ['oct','Octobre — bilan S1‑S2, reprise Analyse 1 & Algèbre 1'],
+    ['novdec','Nov.–déc. — consolidation S3, 1ère série d\'annales'],
+    ['janfev','Janv.–févr. — Analyse 3/4, Algèbre 3, physique avancée'],
+    ['marsavr','Mars–avril — annales chronométrées, fiches de synthèse'],
+    ['mai','Mai — dossier de candidature prêt'],
+    ['juinjuil','Juin–juillet — inscriptions, simulations, jour J'],
+  ]},
+  { id:'do', icon:'folder', title:'Dossier & inscriptions', items:[
+    ['comptes','Créer les comptes sur les plateformes des écoles visées'],
+    ['releves','Rassembler les relevés de notes S1, S2, S3 (puis S4)'],
+    ['scans','Scanner CIN et diplôme du bac'],
+    ['seuils','Vérifier les seuils de moyenne / mentions à jour'],
+    ['veille','Suivre les avis officiels (dates d\'ouverture)'],
+  ]},
+];
+
+const STORAGE_KEY = 'concours-tracker-v1';
+let state = {};
+
+function allItemIds(){
+  return SECTIONS.flatMap(s => s.items.map(([id]) => s.id + '-' + id));
+}
+
+function counts(sectionId){
+  const sec = SECTIONS.find(s => s.id === sectionId);
+  const total = sec.items.length;
+  const done = sec.items.filter(([id]) => state[sectionId + '-' + id]).length;
+  return {done, total};
+}
+
+function renderSections(){
+  const root = document.getElementById('sections');
+  root.innerHTML = '';
+  SECTIONS.forEach((sec, idx) => {
+    const {done, total} = counts(sec.id);
+
+    const el = document.createElement('section');
+    el.className = 'card' + (idx === 0 ? ' open' : '');
+    el.innerHTML = `
+      <button class="card-head" type="button" aria-expanded="${idx===0}">
+        <span class="icon">${ICONS[sec.icon]}</span>
+        <span class="titles">
+          <h2>${sec.title}</h2>
+          <span class="frac" data-frac>${done}/${total} validés</span>
+        </span>
+        <span class="chevron">${ICONS.chevron}</span>
+      </button>
+      <div class="card-body" data-body>
+        ${sec.items.map(([id, label]) => {
+          const key = sec.id + '-' + id;
+          const isDone = !!state[key];
+          return `<div class="item${isDone?' done':''}" data-key="${key}">
+            <span class="box" role="checkbox" aria-checked="${isDone}" tabindex="0" data-key="${key}">${ICONS.check}</span>
+            <label data-key="${key}">${label}</label>
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+    root.appendChild(el);
+
+    const head = el.querySelector('.card-head');
+    const body = el.querySelector('[data-body]');
+    head.addEventListener('click', () => {
+      const isOpen = el.classList.toggle('open');
+      head.setAttribute('aria-expanded', String(isOpen));
+      body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0px';
+    });
+
+    el.querySelectorAll('[data-key]').forEach(node => {
+      if (node.tagName === 'LABEL') return;
+      node.addEventListener('click', () => toggleItem(node.dataset.key));
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(node.dataset.key); }
+      });
+    });
+    el.querySelectorAll('label[data-key]').forEach(node => {
+      node.addEventListener('click', () => toggleItem(node.dataset.key));
+    });
+  });
+
+  document.querySelectorAll('section.card.open [data-body]').forEach(b => {
+    b.style.maxHeight = b.scrollHeight + 'px';
+  });
+}
+
+function renderGlobal(){
+  const ids = allItemIds();
+  const done = ids.filter(id => state[id]).length;
+  const total = ids.length;
+  document.getElementById('global-count').textContent = `${done}/${total}`;
+  document.getElementById('global-bar').style.width = (total ? (done/total*100) : 0) + '%';
+}
+
+function toggleItem(key){
+  state[key] = !state[key];
+  persist();
+  renderSections();
+  renderGlobal();
+}
+
+// --- Stockage local du navigateur (fonctionne sur GitHub Pages / tout hébergement statique) ---
+function persist(){
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('Sauvegarde impossible :', err);
+  }
+}
+
+function load(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) state = JSON.parse(raw);
+  } catch (err) {
+    state = {};
+  }
+  renderSections();
+  renderGlobal();
+}
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if (!confirm('Effacer toute la progression enregistrée ?')) return;
+  state = {};
+  persist();
+  renderSections();
+  renderGlobal();
+});
+
+load();
+</script>
+</body>
+</html>
