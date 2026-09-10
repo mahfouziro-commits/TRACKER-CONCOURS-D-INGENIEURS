@@ -17,8 +17,8 @@
     --accent: #9B2C31;
     --accent-wash: #F1DBD8;
     --gold: #A9832F;
-    --m1: #EAD3D1;
-    --m2: #CE8D8F;
+    --gold-deep: #8C6D26;
+    --gold-wash: #F1E6CE;
   }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans', sans-serif;-webkit-font-smoothing:antialiased;}
@@ -27,40 +27,20 @@
   header.masthead{position:relative;padding:6px 0 22px;border-bottom:2px solid var(--ink);margin-bottom:18px;}
   h1{font-family:'Fraunces', serif;font-weight:600;font-size:clamp(1.6rem, 5vw, 2.15rem);line-height:1.15;margin:0 0 8px;max-width:14ch;}
   .subtitle{font-size:0.95rem;color:var(--ink-soft);max-width:46ch;line-height:1.5;margin:0;}
-  .seal{position:absolute;top:2px;right:0;width:84px;height:84px;border:2px solid var(--accent);border-radius:50%;color:var(--accent);display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(9deg);font-weight:600;font-size:0.62rem;letter-spacing:0.03em;line-height:1.25;padding:6px;}
-  .seal span{display:block;}
+  .seal{position:absolute; top:2px; right:0; width:84px; height:84px; border:2px solid var(--accent); border-radius:50%; color:var(--accent); display:flex; align-items:center; justify-content:center; text-align:center; transform:rotate(9deg); font-weight:600; font-size:0.62rem; letter-spacing:0.03em; line-height:1.25; padding:6px;}
   .seal .big{font-family:'Fraunces', serif; font-size:1.05rem; margin:1px 0;}
 
-  .filter-row{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
-  .filter-btn{font-family:inherit;font-size:0.8rem;padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);cursor:pointer;}
-  .filter-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-wash);}
-  .filter-btn:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .filters{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:6px;}
+  .filters .label{font-size:0.78rem; color:var(--ink-soft); margin-right:2px;}
+  .pill-toggle{border:1px solid var(--line); background:var(--card); color:var(--ink-soft); font-family:inherit; font-size:0.78rem; padding:5px 12px; border-radius:999px; cursor:pointer;}
+  .pill-toggle.active{border-color:var(--accent); background:var(--accent); color:#fff;}
+  .hint{font-size:0.76rem; color:var(--ink-soft); margin:2px 0 20px;}
 
-  .progress-global{display:flex; align-items:center; gap:14px; margin:0 0 24px;}
+  .progress-global{display:flex; align-items:center; gap:14px; margin:16px 0 22px;}
   .progress-global .count{font-family:'Fraunces', serif; font-size:1.4rem; white-space:nowrap;}
-  .progress-global .count small{font-family:'IBM Plex Sans',sans-serif; font-size:0.7rem; color:var(--ink-soft); display:block; font-weight:500; letter-spacing:0.01em;}
+  .progress-global .count small{font-family:'IBM Plex Sans',sans-serif; font-size:0.7rem; color:var(--ink-soft); display:block; font-weight:500;}
   .bar-track{flex:1; height:8px; background:var(--line-soft); border-radius:5px; overflow:hidden;}
   .bar-fill{height:100%; background:var(--accent); border-radius:5px; transition:width 0.35s ease;}
-
-  .examlog{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:20px;}
-  .examlog h2{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; margin:0 0 10px;}
-  .chart-wrap{margin-bottom:8px;}
-  #exam-chart{width:100%;height:auto;display:block;}
-  .chart-empty{font-size:0.82rem;color:var(--ink-soft);padding:16px 0;text-align:center;margin:0;}
-  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;font-size:0.72rem;color:var(--ink-soft);}
-  .legend .sw{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle;}
-  #exam-form{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
-  #exam-form input, #exam-form select{font-family:inherit;font-size:0.82rem;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:var(--card);color:var(--ink);}
-  #exam-form input[type=number]{width:70px;}
-  #exam-form button{font-family:inherit;font-size:0.82rem;padding:6px 14px;border-radius:5px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;}
-  .exam-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line-soft);font-size:0.82rem;}
-  .exam-row:last-child{border-bottom:none;}
-  .exam-date{color:var(--ink-soft);width:38px;flex:none;}
-  .exam-tag{border:1px solid var(--sc);color:var(--sc);font-size:0.68rem;padding:1px 6px;border-radius:9px;flex:none;}
-  .exam-matiere{flex:1;}
-  .exam-note{font-weight:600;flex:none;}
-  .exam-del{flex:none;border:none;background:none;color:var(--ink-soft);cursor:pointer;font-size:1rem;line-height:1;padding:0 4px;}
-  .exam-del:hover{color:var(--accent);}
 
   section.card{background:var(--card); border:1px solid var(--line); border-radius:6px; margin-bottom:12px; overflow:hidden;}
   .card-head{width:100%; display:flex; align-items:center; gap:12px; padding:14px 16px; background:none; border:none; cursor:pointer; text-align:left; font-family:inherit; color:inherit;}
@@ -68,44 +48,51 @@
   .icon{flex:none; width:22px; height:22px; color:var(--ink-soft);}
   .card-head .titles{flex:1; min-width:0;}
   .card-head h2{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; margin:0;}
-  .pills{display:block;margin-top:4px;}
-  .school-pill{display:inline-block;font-size:0.65rem;padding:2px 7px;border:1px solid var(--sc);color:var(--sc);border-radius:10px;margin-right:4px;margin-top:2px;}
-  .card-head .frac{font-size:0.78rem; color:var(--ink-soft); margin-top:4px;}
+  .card-head .frac{font-size:0.78rem; color:var(--ink-soft); margin-top:2px;}
   .chevron{flex:none; width:14px; height:14px; color:var(--ink-soft); transition:transform 0.25s ease;}
   section.card.open .chevron{transform:rotate(180deg);}
-
   .card-body{max-height:0; overflow:hidden; transition:max-height 0.3s ease; padding:0 16px;}
-  section.card.open .card-body{padding:2px 16px 12px;}
+  section.card.open .card-body{padding:4px 16px 14px;}
 
-  .item{display:flex; align-items:flex-start; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);}
+  .item{display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);}
   .item:last-child{border-bottom:none;}
-  .item .box{flex:none; width:19px; height:19px; margin-top:2px; border:1.5px solid var(--ink-soft); border-radius:4px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--card);}
-  .item .box svg{width:12px;height:12px;opacity:0;transition:opacity 0.15s ease;}
-  .item.done .box{border-color:var(--accent); background:var(--accent-wash);}
-  .item.done .box svg{opacity:1;}
-  .item.done .box svg path{stroke:var(--accent);}
-  .item label{cursor:pointer; font-size:0.93rem; line-height:1.4; padding-top:1px;}
-  .item.done label{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+  .item label{flex:1; font-size:0.93rem; line-height:1.35;}
+  .lvl-btn{flex:none; min-width:104px; text-align:center; font-family:inherit; font-size:0.7rem; font-weight:500; padding:6px 8px; border-radius:999px; cursor:pointer; border:1.5px solid var(--line);}
+  .lvl-btn.lvl-0{background:var(--card); color:var(--ink-soft);}
+  .lvl-btn.lvl-1{background:var(--gold-wash); border-color:var(--gold); color:var(--gold-deep);}
+  .lvl-btn.lvl-2{background:var(--gold-deep); border-color:var(--gold-deep); color:#fff;}
+  .lvl-btn.lvl-3{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .lvl-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
 
-  .mastery-item{align-items:center;}
-  .mastery{display:flex;gap:4px;flex:none;margin-top:0;}
-  .dot{width:14px;height:14px;border-radius:4px;border:1.5px solid var(--ink-soft);cursor:pointer;background:var(--card);}
-  .dot.lvl-1{background:var(--m1);border-color:var(--m1);}
-  .dot.lvl-2{background:var(--m2);border-color:var(--m2);}
-  .dot.lvl-3{background:var(--accent);border-color:var(--accent);}
-  .item-text{flex:1;}
-  .item-label{font-size:0.93rem;line-height:1.4;}
-  .item-state{font-size:0.72rem;color:var(--ink-soft);margin-top:1px;}
+  .item.task .box{flex:none; width:19px; height:19px; border:1.5px solid var(--ink-soft); border-radius:4px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--card);}
+  .item.task .box svg{width:12px;height:12px;opacity:0;stroke:var(--accent);transition:opacity 0.15s ease;}
+  .item.task.done .box{border-color:var(--accent); background:var(--accent-wash);}
+  .item.task.done .box svg{opacity:1;}
+  .item.task.done label{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+
+  .exam-form{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px;}
+  .exam-form input, .exam-form select{font-family:inherit; font-size:0.85rem; padding:8px 10px; border:1px solid var(--line); border-radius:5px; background:#fff; color:var(--ink); width:100%;}
+  .exam-form .full{grid-column:1 / -1;}
+  .add-btn{grid-column:1 / -1; background:var(--ink); color:#fff; border:none; font-family:inherit; font-size:0.85rem; font-weight:500; padding:9px; border-radius:5px; cursor:pointer;}
+  .add-btn:hover{background:var(--accent);}
+  .exam-row{display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--line-soft);}
+  .exam-row:last-child{border-bottom:none;}
+  .exam-bar{flex:none; width:6px; height:28px; border-radius:3px; background:var(--line-soft);}
+  .exam-info{flex:1; min-width:0;}
+  .exam-info .exam-label{font-size:0.88rem;}
+  .exam-info .exam-meta{font-size:0.74rem; color:var(--ink-soft);}
+  .exam-score{flex:none; font-family:'Fraunces', serif; font-size:1rem;}
+  .exam-del{flex:none; background:none; border:none; color:var(--ink-soft); font-size:1rem; cursor:pointer; padding:2px 6px;}
+  .exam-del:hover{color:var(--accent);}
+  .exam-empty{font-size:0.83rem; color:var(--ink-soft); padding:6px 0 4px;}
 
   footer{margin-top:26px; text-align:center;}
-  footer p{font-size:0.78rem; color:var(--ink-soft); line-height:1.6; max-width:46ch; margin:0 auto 14px;}
-  .toolbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
-  .toolbar button{font-family:inherit;font-size:0.78rem;padding:7px 14px;border-radius:5px;border:1px solid var(--line);background:none;color:var(--ink-soft);cursor:pointer;}
-  .toolbar button:hover{border-color:var(--accent);color:var(--accent);}
+  footer p{font-size:0.78rem; color:var(--ink-soft); line-height:1.6; max-width:44ch; margin:0 auto 14px;}
+  .footer-actions{display:flex; justify-content:center; gap:8px; flex-wrap:wrap;}
+  .ghost-btn{background:none; border:1px solid var(--line); color:var(--ink-soft); font-family:inherit; font-size:0.78rem; padding:7px 14px; border-radius:5px; cursor:pointer;}
+  .ghost-btn:hover{border-color:var(--accent); color:var(--accent);}
 
-  @media (prefers-reduced-motion: reduce){
-    .bar-fill, .card-body, .chevron{transition:none;}
-  }
+  @media (prefers-reduced-motion: reduce){.bar-fill,.card-body,.chevron,.item .box svg{transition:none;}}
 </style>
 </head>
 <body>
@@ -117,48 +104,52 @@
     <div class="seal"><span>OBJECTIF</span><span class="big">2027</span><span>CONCOURS</span></div>
   </header>
 
-  <div class="filter-row" id="filter-row"></div>
+  <div class="filters" id="filters">
+    <span class="label">Afficher pour :</span>
+    <button class="pill-toggle" data-school="EMI" type="button">EMI</button>
+    <button class="pill-toggle" data-school="ENSIAS" type="button">ENSIAS</button>
+    <button class="pill-toggle" data-school="INPT" type="button">INPT</button>
+  </div>
+  <p class="hint">Aucune école sélectionnée = tout s'affiche. Sur chaque chapitre, tape l'étiquette pour la faire avancer : à revoir → vu → exercices faits → maîtrisé.</p>
 
   <div class="progress-global">
-    <div class="count"><span id="global-count">0/0</span><small id="global-label">Progression globale</small></div>
+    <div class="count"><span id="global-count">0/0</span><small>chapitres &amp; étapes maîtrisés</small></div>
     <div class="bar-track"><div class="bar-fill" id="global-bar" style="width:0%"></div></div>
   </div>
 
-  <section class="examlog">
-    <h2>Suivi des annales & examens blancs</h2>
-    <div class="chart-wrap">
-      <svg id="exam-chart" viewBox="0 0 600 170" preserveAspectRatio="none"></svg>
-      <p class="chart-empty" id="chart-empty">Ajoute ta première note pour voir ta progression ici.</p>
+  <section class="card open" id="exams-card">
+    <button class="card-head" type="button" aria-expanded="true">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 4-6"/></svg></span>
+      <span class="titles"><h2>Annales &amp; examens blancs</h2><span class="frac" id="exams-count">0 note enregistrée</span></span>
+      <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+    </button>
+    <div class="card-body" id="exams-body">
+      <div class="exam-form">
+        <select id="exam-subject">
+          <option>Mathématiques</option>
+          <option>Physique</option>
+          <option>Informatique</option>
+          <option>Anglais</option>
+          <option>Général</option>
+        </select>
+        <input id="exam-date" type="date">
+        <input id="exam-label" class="full" type="text" placeholder="Ex. Annale EMI 2025, DS blanc n°2...">
+        <input id="exam-score" type="number" min="0" max="20" step="0.25" placeholder="Note /20">
+        <button class="add-btn" id="exam-add" type="button">Ajouter la note</button>
+      </div>
+      <div id="exam-list"></div>
     </div>
-    <div class="legend">
-      <span><span class="sw" style="background:var(--accent)"></span>EMI</span>
-      <span><span class="sw" style="background:var(--gold)"></span>ENSIAS</span>
-      <span><span class="sw" style="background:var(--ink)"></span>INPT</span>
-      <span><span class="sw" style="background:var(--ink-soft)"></span>Autre</span>
-    </div>
-    <form id="exam-form">
-      <input type="date" id="exam-date" required>
-      <select id="exam-ecole">
-        <option>EMI</option><option>ENSIAS</option><option>INPT</option><option>Autre</option>
-      </select>
-      <select id="exam-matiere">
-        <option>Maths</option><option>Physique</option><option>Informatique</option><option>Anglais</option><option>Autre</option>
-      </select>
-      <input type="number" id="exam-note" min="0" max="20" step="0.5" placeholder="/20" required>
-      <button type="submit">Ajouter</button>
-    </form>
-    <div id="exam-list"></div>
   </section>
 
   <div id="sections"></div>
 
   <footer>
     <p>Ce carnet est un repère personnel, pas une échéance officielle : les seuils de moyenne, mentions et dates de concours sont fixés chaque année par les écoles. Vérifie toujours l'avis officiel publié avant de t'inscrire.</p>
-    <div class="toolbar">
-      <button id="export-btn" type="button">Exporter</button>
-      <button id="import-btn" type="button">Importer</button>
-      <input type="file" id="import-file" accept="application/json" hidden>
-      <button id="reset-btn" type="button">Réinitialiser</button>
+    <div class="footer-actions">
+      <button class="ghost-btn" id="export-btn" type="button">Exporter une sauvegarde</button>
+      <button class="ghost-btn" id="import-btn" type="button">Importer une sauvegarde</button>
+      <button class="ghost-btn" id="reset-btn" type="button">Réinitialiser</button>
+      <input type="file" id="import-input" accept="application/json" style="display:none">
     </div>
   </footer>
 
@@ -175,290 +166,256 @@ const ICONS = {
   calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
   folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>',
   chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
-  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>'
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>'
 };
 
+const LEVELS = [
+  {label:'À revoir', cls:'lvl-0'},
+  {label:'Cours vu', cls:'lvl-1'},
+  {label:'Exercices faits', cls:'lvl-2'},
+  {label:'Maîtrisé', cls:'lvl-3'},
+];
+
 const SECTIONS = [
-  { id:'an', icon:'wave', title:'Analyse', type:'mastery', schools:['EMI','ENSIAS','INPT'], items:[
+  { id:'an', icon:'wave', title:'Analyse', type:'skill', schools:['EMI','ENSIAS','INPT'], items:[
     ['suites','Suites numériques & limites'],['cont','Continuité & dérivabilité'],['dl','Développements limités'],
     ['integ','Intégration (Riemann)'],['series','Séries numériques'],['fourier','Séries de Fourier'],
     ['plusvar','Fonctions de plusieurs variables'],['integmult','Intégrales multiples'],['eqdiff','Équations différentielles'],
     ['laplace','Transformée de Laplace & complexes (résidus)'],
   ]},
-  { id:'al', icon:'grid', title:'Algèbre', type:'mastery', schools:['EMI','ENSIAS','INPT'], items:[
+  { id:'al', icon:'grid', title:'Algèbre', type:'skill', schools:['EMI','ENSIAS','INPT'], items:[
     ['struct','Structures algébriques (groupes, anneaux, corps)'],['poly','Polynômes & arithmétique'],
     ['ev','Espaces vectoriels & applications linéaires'],['mat','Matrices, déterminants, systèmes linéaires'],
     ['reduc','Réduction des endomorphismes'],['euclid','Espaces euclidiens & formes quadratiques'],
   ]},
-  { id:'pr', icon:'dice', title:'Probabilités & statistiques', type:'mastery', schools:['EMI','ENSIAS','INPT'], items:[
+  { id:'pr', icon:'dice', title:'Probabilités & statistiques', type:'skill', schools:['EMI','ENSIAS','INPT'], items:[
     ['elem','Probabilités élémentaires'],['va','Variables aléatoires & lois usuelles'],['stat','Statistique descriptive'],
   ]},
-  { id:'ph', icon:'orbit', title:'Physique', type:'mastery', schools:['EMI','ENSIAS','INPT'], items:[
+  { id:'ph', icon:'orbit', title:'Physique', type:'skill', schools:['EMI','ENSIAS','INPT'], items:[
     ['mecapt','Mécanique du point'],['mecasol','Mécanique du solide'],['electro','Électrocinétique'],
     ['electromag','Électromagnétisme'],['thermo','Thermodynamique'],['optique','Optique'],['ondes','Ondes & oscillateurs'],
   ]},
-  { id:'in', icon:'code', title:'Informatique', type:'mastery', schools:['ENSIAS','INPT'], items:[
+  { id:'in', icon:'code', title:'Informatique', type:'skill', schools:['ENSIAS','INPT'], items:[
     ['algo','Algorithmique & structures de données'],['progc','Programmation C / C++'],['poo','Programmation orientée objet'],
-    ['bdd','Bases de données & SQL'],['archi',"Architecture & systèmes d'exploitation (notions)"],['reseaux','Réseaux (notions de base)'],
+    ['bdd','Bases de données & SQL'],['archi','Architecture & systèmes d\'exploitation (notions)'],['reseaux','Réseaux (notions de base)'],
   ]},
-  { id:'en', icon:'chat', title:'Anglais (épreuve ENSIAS)', type:'mastery', schools:['ENSIAS'], items:[
+  { id:'en', icon:'chat', title:'Anglais (épreuve ENSIAS)', type:'skill', schools:['ENSIAS'], items:[
     ['gram','Grammaire & structures'],['comp','Compréhension écrite'],['vocab','Vocabulaire scientifique & technique'],
   ]},
-  { id:'pl', icon:'calendar', title:"Plan d'action", type:'task', schools:['EMI','ENSIAS','INPT'], items:[
-    ['oct',"Octobre — bilan S1‑S2, reprise Analyse 1 & Algèbre 1"],['novdec',"Nov.–déc. — consolidation S3, 1ère série d'annales"],
+  { id:'pl', icon:'calendar', title:'Plan d\'action', type:'task', schools:['EMI','ENSIAS','INPT'], items:[
+    ['oct','Octobre — bilan S1‑S2, reprise Analyse 1 & Algèbre 1'],['novdec','Nov.–déc. — consolidation S3, 1ère série d\'annales'],
     ['janfev','Janv.–févr. — Analyse 3/4, Algèbre 3, physique avancée'],['marsavr','Mars–avril — annales chronométrées, fiches de synthèse'],
     ['mai','Mai — dossier de candidature prêt'],['juinjuil','Juin–juillet — inscriptions, simulations, jour J'],
   ]},
   { id:'do', icon:'folder', title:'Dossier & inscriptions', type:'task', schools:['EMI','ENSIAS','INPT'], items:[
     ['comptes','Créer les comptes sur les plateformes des écoles visées'],['releves','Rassembler les relevés de notes S1, S2, S3 (puis S4)'],
     ['scans','Scanner CIN et diplôme du bac'],['seuils','Vérifier les seuils de moyenne / mentions à jour'],
-    ['veille',"Suivre les avis officiels (dates d'ouverture)"],
+    ['veille','Suivre les avis officiels (dates d\'ouverture)'],
   ]},
 ];
 
-const SCHOOL_COLORS = { EMI:'var(--accent)', ENSIAS:'var(--gold)', INPT:'var(--ink)', Autre:'var(--ink-soft)' };
-const MASTERY_LABELS = ['Pas commencé','Cours vu','Exercices faits','Maîtrisé'];
 const STORAGE_KEY = 'concours-tracker-v2';
+let state = { levels:{}, exams:[] };
+let activeFilters = [];
 
-let state = { chapters:{}, exams:[], filter:'ALL' };
+function allKeys(){ return SECTIONS.flatMap(s => s.items.map(([id]) => s.id + '-' + id)); }
 
-function level(key){ return state.chapters[key] || 0; }
+function sectionCounts(sec){
+  const total = sec.items.length;
+  const mastered = sec.items.filter(([id]) => (state.levels[sec.id+'-'+id]||0) === 3).length;
+  const sumLevels = sec.items.reduce((a,[id]) => a + (state.levels[sec.id+'-'+id]||0), 0);
+  return {total, mastered, pct: total ? sumLevels/(3*total)*100 : 0};
+}
 
 function visibleSections(){
-  return SECTIONS.filter(s => state.filter==='ALL' || s.schools.includes(state.filter));
+  if (activeFilters.length === 0) return SECTIONS;
+  return SECTIONS.filter(sec => sec.schools.some(s => activeFilters.includes(s)));
 }
 
-function statsFor(section){
-  const total = section.items.length;
-  const sum = section.items.reduce((acc,[id]) => acc + level(section.id+'-'+id), 0);
-  const doneCount = section.items.filter(([id]) => level(section.id+'-'+id) === 3).length;
-  return { total, sum, doneCount, pct: total ? Math.round(sum/(total*3)*100) : 0 };
-}
-
-function globalStats(){
-  const secs = visibleSections();
-  let total=0, sum=0, doneCount=0;
-  secs.forEach(s => { const st = statsFor(s); total+=st.total; sum+=st.sum; doneCount+=st.doneCount; });
-  return { total, sum, doneCount, pct: total ? Math.round(sum/(total*3)*100) : 0 };
-}
-
-function todayISO(){ return new Date().toISOString().slice(0,10); }
-function formatDate(iso){ const p = iso.split('-'); return p[2]+'/'+p[1]; }
-
-function renderFilterRow(){
-  const el = document.getElementById('filter-row');
-  el.innerHTML = ['ALL','EMI','ENSIAS','INPT'].map(f =>
-    '<button class="filter-btn'+(state.filter===f?' active':'')+'" data-f="'+f+'">'+(f==='ALL'?'Tout':f)+'</button>'
-  ).join('');
-  el.querySelectorAll('.filter-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ state.filter = btn.dataset.f; persist(); renderAll(); });
+function renderFilters(){
+  document.querySelectorAll('.pill-toggle').forEach(btn => {
+    btn.classList.toggle('active', activeFilters.includes(btn.dataset.school));
   });
-}
-
-function renderGlobal(){
-  const st = globalStats();
-  document.getElementById('global-count').textContent = st.doneCount + '/' + st.total;
-  document.getElementById('global-label').textContent = (state.filter==='ALL' ? 'Progression globale' : "Progression vers l'"+state.filter) + ' — maîtrisés';
-  document.getElementById('global-bar').style.width = st.pct + '%';
-}
-
-function renderItem(sec, id, label){
-  const key = sec.id+'-'+id;
-  if(sec.type==='task'){
-    const done = level(key)===3;
-    return '<div class="item'+(done?' done':'')+'" data-key="'+key+'">'
-      +'<span class="box" role="checkbox" aria-checked="'+done+'" tabindex="0">'+ICONS.check+'</span>'
-      +'<label>'+label+'</label></div>';
-  }
-  const lvl = level(key);
-  return '<div class="item mastery-item">'
-    +'<div class="mastery" data-key="'+key+'">'
-      +'<span class="dot '+(lvl>=1?'lvl-1':'')+'" data-lvl="1"></span>'
-      +'<span class="dot '+(lvl>=2?'lvl-2':'')+'" data-lvl="2"></span>'
-      +'<span class="dot '+(lvl>=3?'lvl-3':'')+'" data-lvl="3"></span>'
-    +'</div>'
-    +'<div class="item-text"><div class="item-label">'+label+'</div><div class="item-state">'+MASTERY_LABELS[lvl]+'</div></div>'
-  +'</div>';
 }
 
 function renderSections(){
   const root = document.getElementById('sections');
   root.innerHTML = '';
-  visibleSections().forEach((sec, idx) => {
-    const st = statsFor(sec);
+  const secs = visibleSections();
+  secs.forEach((sec, idx) => {
+    const {total, mastered} = sectionCounts(sec);
     const el = document.createElement('section');
-    el.className = 'card' + (idx===0 ? ' open' : '');
-    const pills = sec.schools.map(s => '<span class="school-pill" style="--sc:'+SCHOOL_COLORS[s]+'">'+s+'</span>').join('');
-    const fracText = st.doneCount+'/'+st.total+(sec.type==='task'?' complétés':' maîtrisés');
+    el.className = 'card' + (idx === 0 ? ' open' : '');
+    const bodyHtml = sec.items.map(([id, label]) => {
+      const key = sec.id + '-' + id;
+      if (sec.type === 'skill') {
+        const level = state.levels[key] || 0;
+        const lvl = LEVELS[level];
+        return '<div class="item"><label>' + label + '</label><button class="lvl-btn ' + lvl.cls + '" data-key="' + key + '" type="button">' + lvl.label + '</button></div>';
+      } else {
+        const done = (state.levels[key]||0) === 3;
+        return '<div class="item task' + (done?' done':'') + '">' +
+          '<span class="box" role="checkbox" aria-checked="' + done + '" tabindex="0" data-key="' + key + '">' + ICONS.check + '</span>' +
+          '<label data-key="' + key + '">' + label + '</label></div>';
+      }
+    }).join('');
+
     el.innerHTML =
-      '<button class="card-head" type="button" aria-expanded="'+(idx===0)+'">'
-        +'<span class="icon">'+ICONS[sec.icon]+'</span>'
-        +'<span class="titles"><h2>'+sec.title+'</h2><span class="pills">'+pills+'</span><span class="frac">'+fracText+'</span></span>'
-        +'<span class="chevron">'+ICONS.chevron+'</span>'
-      +'</button>'
-      +'<div class="card-body" data-body>'+sec.items.map(([id,label]) => renderItem(sec, id, label)).join('')+'</div>';
+      '<button class="card-head" type="button" aria-expanded="' + (idx===0) + '">' +
+        '<span class="icon">' + ICONS[sec.icon] + '</span>' +
+        '<span class="titles"><h2>' + sec.title + '</h2><span class="frac">' + mastered + '/' + total + ' maîtrisés</span></span>' +
+        '<span class="chevron">' + ICONS.chevron + '</span>' +
+      '</button>' +
+      '<div class="card-body" data-body>' + bodyHtml + '</div>';
     root.appendChild(el);
 
     const head = el.querySelector('.card-head');
     const body = el.querySelector('[data-body]');
-    head.addEventListener('click', ()=>{
+    head.addEventListener('click', () => {
       const isOpen = el.classList.toggle('open');
       head.setAttribute('aria-expanded', String(isOpen));
-      body.style.maxHeight = isOpen ? body.scrollHeight+'px' : '0px';
+      body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0px';
     });
 
-    if(sec.type==='task'){
-      el.querySelectorAll('.item[data-key]').forEach(node=>{
-        const key = node.dataset.key;
-        node.querySelector('.box').addEventListener('click', ()=> toggleTask(key));
-        node.querySelector('label').addEventListener('click', ()=> toggleTask(key));
+    if (sec.type === 'skill') {
+      el.querySelectorAll('.lvl-btn').forEach(btn => {
+        btn.addEventListener('click', () => cycleLevel(btn.dataset.key));
       });
     } else {
-      el.querySelectorAll('.mastery').forEach(m=>{
-        m.querySelectorAll('.dot').forEach(dot=>{
-          dot.addEventListener('click', ()=> setMastery(m.dataset.key, parseInt(dot.dataset.lvl,10)));
-        });
+      el.querySelectorAll('[data-key]').forEach(node => {
+        if (node.tagName === 'LABEL') { node.addEventListener('click', () => toggleTask(node.dataset.key)); return; }
+        node.addEventListener('click', () => toggleTask(node.dataset.key));
+        node.addEventListener('keydown', (e) => { if (e.key==='Enter'||e.key===' '){e.preventDefault();toggleTask(node.dataset.key);} });
       });
     }
   });
-  document.querySelectorAll('section.card.open [data-body]').forEach(b=>{ b.style.maxHeight = b.scrollHeight+'px'; });
+  document.querySelectorAll('section.card.open [data-body]').forEach(b => { b.style.maxHeight = b.scrollHeight + 'px'; });
 }
 
-function setMastery(key, clickedLvl){
-  const cur = level(key);
-  state.chapters[key] = (cur === clickedLvl) ? clickedLvl-1 : clickedLvl;
-  persist(); renderAll();
-}
-function toggleTask(key){
-  state.chapters[key] = level(key)===3 ? 0 : 3;
-  persist(); renderAll();
+function renderGlobal(){
+  const keys = allKeys();
+  const sum = keys.reduce((a,k) => a + (state.levels[k]||0), 0);
+  const mastered = keys.filter(k => (state.levels[k]||0) === 3).length;
+  document.getElementById('global-count').textContent = mastered + '/' + keys.length;
+  document.getElementById('global-bar').style.width = (keys.length ? sum/(3*keys.length)*100 : 0) + '%';
 }
 
-function renderChart(){
-  const svg = document.getElementById('exam-chart');
-  const entries = [...state.exams].sort((a,b)=> a.date.localeCompare(b.date));
-  if(entries.length === 0){
-    svg.innerHTML = '';
-    document.getElementById('chart-empty').style.display = 'block';
-    return;
-  }
-  document.getElementById('chart-empty').style.display = 'none';
-  const W=600, H=170, PAD=32;
-  const n = entries.length;
-  const x = i => n===1 ? W/2 : PAD + i*(W-2*PAD)/(n-1);
-  const y = note => PAD + (20-note)/20*(H-2*PAD);
-  let grid = '';
-  [0,5,10,15,20].forEach(v=>{
-    const gy = y(v);
-    grid += '<line x1="'+PAD+'" y1="'+gy+'" x2="'+(W-8)+'" y2="'+gy+'" stroke="var(--line)" stroke-width="1"/>';
-    grid += '<text x="4" y="'+(gy+3)+'" font-size="9" fill="var(--ink-soft)">'+v+'</text>';
-  });
-  const pts = entries.map((e,i)=> x(i)+','+y(e.note)).join(' ');
-  const dots = entries.map((e,i)=> '<circle cx="'+x(i)+'" cy="'+y(e.note)+'" r="4" fill="'+(SCHOOL_COLORS[e.ecole]||SCHOOL_COLORS.Autre)+'"/>').join('');
-  svg.innerHTML = grid + '<polyline points="'+pts+'" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>' + dots;
-}
-
-function renderExamList(){
-  const root = document.getElementById('exam-list');
-  const entries = [...state.exams].sort((a,b)=> b.date.localeCompare(a.date));
-  root.innerHTML = entries.map(e =>
-    '<div class="exam-row">'
-      +'<span class="exam-date">'+formatDate(e.date)+'</span>'
-      +'<span class="exam-tag" style="--sc:'+(SCHOOL_COLORS[e.ecole]||SCHOOL_COLORS.Autre)+'">'+e.ecole+'</span>'
-      +'<span class="exam-matiere">'+e.matiere+'</span>'
-      +'<span class="exam-note">'+e.note+'/20</span>'
-      +'<button class="exam-del" data-id="'+e.id+'" aria-label="Supprimer">×</button>'
-    +'</div>'
-  ).join('');
-  root.querySelectorAll('.exam-del').forEach(btn=>{
-    btn.addEventListener('click', ()=> deleteExam(btn.dataset.id));
-  });
-}
-
-function deleteExam(id){
-  state.exams = state.exams.filter(e => e.id !== id);
-  persist(); renderChart(); renderExamList();
-}
-
-function renderExamLog(){ renderChart(); renderExamList(); }
-
-function renderAll(){
-  renderFilterRow();
-  renderGlobal();
+async function cycleLevel(key){
+  state.levels[key] = ((state.levels[key]||0) + 1) % 4;
+  await persist();
   renderSections();
-  renderExamLog();
+  renderGlobal();
+}
+async function toggleTask(key){
+  state.levels[key] = (state.levels[key]||0) > 0 ? 0 : 3;
+  await persist();
+  renderSections();
+  renderGlobal();
 }
 
-document.getElementById('exam-form').addEventListener('submit', (e)=>{
-  e.preventDefault();
+function renderExams(){
+  const list = document.getElementById('exam-list');
+  const entries = [...state.exams].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  document.getElementById('exams-count').textContent = entries.length ? (entries.length + ' note' + (entries.length>1?'s':'') + ' enregistrée' + (entries.length>1?'s':'')) : '0 note enregistrée';
+  if (!entries.length) { list.innerHTML = '<p class="exam-empty">Ajoute ta première note d\'annale ou de devoir blanc ci-dessus.</p>'; return; }
+  list.innerHTML = entries.map(e => {
+    const score = parseFloat(e.score);
+    const barColor = isNaN(score) ? 'var(--line-soft)' : (score >= 14 ? 'var(--accent)' : score >= 10 ? 'var(--gold)' : 'var(--line)');
+    return '<div class="exam-row">' +
+      '<span class="exam-bar" style="background:' + barColor + '"></span>' +
+      '<span class="exam-info"><span class="exam-label">' + (e.label || e.subject) + '</span><br><span class="exam-meta">' + e.subject + (e.date ? ' · ' + formatDate(e.date) : '') + '</span></span>' +
+      '<span class="exam-score">' + (isNaN(score) ? '—' : score) + '/20</span>' +
+      '<button class="exam-del" data-id="' + e.id + '" type="button" aria-label="Supprimer">×</button>' +
+    '</div>';
+  }).join('');
+  list.querySelectorAll('.exam-del').forEach(btn => btn.addEventListener('click', () => deleteExam(btn.dataset.id)));
+}
+function formatDate(d){ const parts = d.split('-'); return parts.length===3 ? (parts[2]+'/'+parts[1]+'/'+parts[0]) : d; }
+
+async function addExam(){
+  const subject = document.getElementById('exam-subject').value;
   const date = document.getElementById('exam-date').value;
-  const ecole = document.getElementById('exam-ecole').value;
-  const matiere = document.getElementById('exam-matiere').value;
-  const note = parseFloat(document.getElementById('exam-note').value);
-  if(!date || isNaN(note)) return;
-  state.exams.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,6), date, ecole, matiere, note });
-  persist();
-  renderExamLog();
-  document.getElementById('exam-form').reset();
-  document.getElementById('exam-date').value = todayISO();
-});
-
-document.getElementById('export-btn').addEventListener('click', ()=>{
-  const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'carnet-prepa-'+todayISO()+'.json';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-});
-document.getElementById('import-btn').addEventListener('click', ()=>{
-  document.getElementById('import-file').click();
-});
-document.getElementById('import-file').addEventListener('change', (e)=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      const parsed = JSON.parse(reader.result);
-      state = normalizeState(parsed);
-      persist();
-      renderAll();
-    } catch(err){ alert('Fichier invalide, import annulé.'); }
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-});
-document.getElementById('reset-btn').addEventListener('click', ()=>{
-  if(!confirm('Effacer toute la progression enregistrée ?')) return;
-  state = { chapters:{}, exams:[], filter: state.filter };
-  persist(); renderAll();
-});
-
-function normalizeState(raw){
-  if(raw && typeof raw === 'object' && raw.chapters){
-    return { chapters: raw.chapters || {}, exams: Array.isArray(raw.exams) ? raw.exams : [], filter: raw.filter || 'ALL' };
-  }
-  const chapters = {};
-  if(raw && typeof raw === 'object'){
-    Object.keys(raw).forEach(k => { chapters[k] = raw[k] ? 3 : 0; });
-  }
-  return { chapters, exams:[], filter:'ALL' };
+  const label = document.getElementById('exam-label').value.trim();
+  const score = document.getElementById('exam-score').value;
+  if (!label || score === '') { alert('Ajoute au moins un intitulé et une note.'); return; }
+  state.exams.push({ id: 'x' + Date.now(), subject, date, label, score });
+  document.getElementById('exam-label').value = '';
+  document.getElementById('exam-score').value = '';
+  await persist();
+  renderExams();
+}
+async function deleteExam(id){
+  state.exams = state.exams.filter(e => e.id !== id);
+  await persist();
+  renderExams();
 }
 
+// Stockage local du navigateur (fonctionne sur GitHub Pages / tout hebergement statique)
 async function persist(){
-  try { await window.storage.set(STORAGE_KEY, JSON.stringify(state), false); }
-  catch(err){ console.error('Sauvegarde impossible :', err); }
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  catch (err) { console.error('Sauvegarde impossible :', err); }
 }
 async function load(){
   try {
-    const result = await window.storage.get(STORAGE_KEY, false);
-    if(result && result.value) state = normalizeState(JSON.parse(result.value));
-  } catch(err){ /* pas encore de données */ }
-  document.getElementById('exam-date').value = todayISO();
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      state = { levels: parsed.levels || {}, exams: Array.isArray(parsed.exams) ? parsed.exams : [] };
+    }
+  } catch (err) { state = { levels:{}, exams:[] }; }
   renderAll();
 }
+function renderAll(){ renderFilters(); renderSections(); renderGlobal(); renderExams(); }
+
+function exportData(){
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'prepa-concours-sauvegarde-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+function importData(file){
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      state = { levels: parsed.levels || {}, exams: Array.isArray(parsed.exams) ? parsed.exams : [] };
+      await persist();
+      renderAll();
+    } catch (err) { alert('Fichier invalide ou corrompu.'); }
+  };
+  reader.readAsText(file);
+}
+
+document.querySelectorAll('.pill-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const s = btn.dataset.school;
+    activeFilters = activeFilters.includes(s) ? activeFilters.filter(x => x!==s) : [...activeFilters, s];
+    renderFilters();
+    renderSections();
+  });
+});
+document.getElementById('exam-add').addEventListener('click', addExam);
+document.getElementById('exams-card').querySelector('.card-head').addEventListener('click', function(){
+  const el = document.getElementById('exams-card');
+  const isOpen = el.classList.toggle('open');
+  this.setAttribute('aria-expanded', String(isOpen));
+  const body = document.getElementById('exams-body');
+  body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0px';
+});
+document.getElementById('export-btn').addEventListener('click', exportData);
+document.getElementById('import-btn').addEventListener('click', () => document.getElementById('import-input').click());
+document.getElementById('import-input').addEventListener('change', (e) => { if (e.target.files[0]) importData(e.target.files[0]); });
+document.getElementById('reset-btn').addEventListener('click', async () => {
+  if (!confirm('Effacer toute la progression et les notes enregistrées ?')) return;
+  state = { levels:{}, exams:[] };
+  await persist();
+  renderAll();
+});
+
 load();
+setTimeout(() => { const b = document.getElementById('exams-body'); if (b) b.style.maxHeight = b.scrollHeight + 'px'; }, 50);
 </script>
 </body>
 </html>
